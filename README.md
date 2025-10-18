@@ -18,12 +18,23 @@ Snapchat Memories Exporter is a Swift-based macOS app that allows you to downloa
 ## Requirements
 
 - macOS 13.0 (Ventura) or later
-- Xcode 14.0 or later (for building from source)
 - Active Snapchat account with data export access
 
 ## Installation
 
-### Option 1: Build from Source
+### Download Pre-built App
+
+1. Go to the [Releases](https://github.com/jackfpaylor/snapchat-memories-exporter/releases) page
+2. Download `snap_memory_saver.app.zip` from the latest release
+3. Unzip the file (double-click it)
+4. Move `snap_memory_saver.app` to your Applications folder (optional but recommended)
+5. **Important**: Right-click on the app and select "Open" (required for first launch)
+6. Click "Open" in the security dialog that appears
+7. The app will now run normally
+
+### Building from Source
+
+If you prefer to build the app yourself:
 
 1. Clone the repository:
 ```bash
@@ -39,150 +50,174 @@ open snap_memory_saver.xcodeproj
 3. Build and run the project:
    - Select your Mac as the target device
    - Press `Cmd + R` or click the "Run" button
-
-### Option 2: Download Pre-built App
-
-Pre-built releases are available on the [Releases](https://github.com/jackfpaylor/snapchat-memories-exporter/releases) page.
+   - Requires Xcode 14.0 or later
 
 ## Getting Your Snapchat Data
 
-Before using this app, you need to request your data from Snapchat:
+Before using this app, you need to request your data from Snapchat. Follow these steps carefully:
 
-1. Open Snapchat on your mobile device
-2. Tap your profile icon in the top-left corner
-3. Tap the settings gear icon in the top-right corner
-4. Scroll down to "My Data"
-5. Tap "Submit Request"
-6. Select the data you want to include (make sure "Memories" is checked)
-7. Choose "JSON" as the file format
-8. Tap "Submit Request"
+### Step 1: Request Your Data from Snapchat
 
-Snapchat typically processes data requests within 24 hours. You'll receive an email when your data is ready to download.
+1. **Open Snapchat** on your phone (iPhone or Android)
+2. **Tap your profile picture** in the top-left corner of the screen
+3. **Tap the settings gear icon** ⚙️ in the top-right corner
+4. **Scroll down** and tap on **"My Data"**
+5. **Tap "Submit Request"** at the bottom of the screen
+
+### Step 2: Choose the Right Export Options
+
+This is important - you need to select specific options:
+
+1. **Select what data to include:**
+   - Make sure **"Memories"** is checked ✓
+   - You can uncheck other items if you only want your memories
+
+2. **IMPORTANT: Choose the file format:**
+   - Look for the option that says **"Export JSON Files"**
+   - The full text will say: **"Export JSON Files - For data portability purposes"**
+   - **Tap this option to select it** (this is required for the app to work)
+   - Do NOT select "HTML only" - the app needs the JSON files
+
+3. **Tap "Submit Request"** at the bottom
+
+### Step 3: Wait for Your Data
+
+- Snapchat will email you when your data is ready (usually within 24 hours)
+- The email subject will be something like "Your Snapchat Data is Ready"
+- The email will contain a download link
+
+### Step 4: Download and Unzip Your Data
+
+1. **Click the download link** in the email from Snapchat
+2. **Save the ZIP file** to your computer (it will be a large file)
+3. **Double-click the ZIP file** to unzip it
+4. You'll see a folder with your Snapchat data inside
+
+### Step 5: Find the memories_history.json File
+
+1. **Open the unzipped folder** from Snapchat
+2. **Look for a folder named "json"** and open it
+3. **Find the file named exactly:** `memories_history.json`
+4. **Remember where this file is** - you'll need to select it in the app
 
 **Important Notes:**
-- Download links in the JSON export expire after a short period (typically a few days)
-- If you see many failed downloads, you may need to request a fresh data export
-- The app requires the `memories_history.json` file from your Snapchat data export
+- The file MUST be named exactly `memories_history.json` (if you don't see this file, you may have selected the wrong export option in Step 2)
+- Download links in the file expire after a few days, so use the app soon after downloading your data
+- If links expire, you'll need to request a fresh data export from Snapchat
 
-## Usage
+## Using the App
 
-### Step 1: Prepare Your Data
+### Step 1: Launch the App
 
-1. Download your Snapchat data export from the link in your email
-2. Unzip the downloaded file
-3. Locate the `memories_history.json` file in the `json` folder
+1. **Open the Snapchat Memories Exporter app** from your Applications folder
+2. You'll see a window with two main steps
 
-### Step 2: Run the Application
+### Step 2: Select Your JSON File
 
-1. Launch the Snapchat Memories Exporter app
-2. Click "Choose File" and select your `memories_history.json` file
-3. The app will display how many memories were found
-4. Click "Choose Folder" to select where you want to save your memories
-5. Click "Download All Memories" to begin the download process
+1. **Click the "Choose File" button**
+2. **Navigate to where you unzipped your Snapchat data**
+3. **Go into the "json" folder**
+4. **Select the file named `memories_history.json`**
+5. **Click "Open"**
 
-### Step 3: Monitor Progress
+The app will show you how many memories were found (e.g., "11,916 memories found")
 
-The app will display:
-- Real-time progress bar
-- Current file being downloaded
-- Success and failure counts
-- Overall completion status
+### Step 3: Choose Where to Save Your Memories
 
-### Step 4: Review Results
+1. **Click the "Choose Folder" button**
+2. **Select a folder** where you want your memories saved (like Desktop, Documents, or an external drive)
+3. **Click "Choose Folder"**
 
-After downloading completes:
-- Successfully downloaded files will be organized in date-based folders
-- If any downloads failed, you can click "View Failed" to see which files had issues
-- Failed downloads typically indicate expired download links
+Tip: Make sure you have enough space - memories can take up several gigabytes!
 
-## Output Structure
+### Step 4: Download Your Memories
 
-Downloaded files are organized as follows:
+1. **Click "Download All Memories"**
+2. Watch the progress bar as your memories download
+3. The app will show you:
+   - How many files have been downloaded successfully
+   - How many failed (if any)
+   - Which file is currently downloading
+
+### Step 5: Review Your Downloaded Memories
+
+When the download finishes:
+- **Green message**: All files downloaded successfully!
+- **Orange message with "View Failed" button**: Some files failed to download (usually because download links expired)
+
+**If you see failed downloads:**
+1. Click "View Failed" to see which files didn't download
+2. The most common reason is expired download links
+3. To fix this, request a fresh data export from Snapchat and try again
+
+## What You'll Get
+
+Your memories will be organized in folders by date:
 ```
-Output Folder/
+Your Chosen Folder/
 ├── 2025-10/
-│   ├── 2025-10-05_05-01-04.jpg
-│   ├── 2025-10-05_05-01-04.json
+│   ├── 2025-10-05_05-01-04.jpg        (your photo)
+│   ├── 2025-10-05_05-01-04.json       (information about the photo)
 │   ├── 2025-10-04_23-08-19.jpg
 │   └── 2025-10-04_23-08-19.json
 ├── 2025-09/
-│   ├── 2025-09-20_06-05-48.mp4
-│   └── 2025-09-20_06-05-48.json
+│   ├── 2025-09-20_06-05-48.mp4        (your video)
+│   └── 2025-09-20_06-05-48.json       (information about the video)
 └── Unknown_Date/
-    └── (files without parseable dates)
+    └── (any files without dates)
 ```
 
-### Metadata Format
+### What's in the JSON Files?
 
-Each media file has a companion JSON file containing:
-```json
-{
-  "Date": "2025-10-05 05:01:04 UTC",
-  "Download Link": "https://...",
-  "Latitude": 32.811264,
-  "Location": "Latitude, Longitude: 32.811264, -96.76935",
-  "Longitude": -96.76935,
-  "Media Type": "Image"
-}
-```
+Each photo or video has a small JSON file next to it with information like:
+- The exact date and time it was taken
+- GPS coordinates (if you had location enabled)
+- Whether it's a photo or video
 
-## Troubleshooting
+You can ignore these JSON files if you just want your photos and videos.
 
-### "Failed to parse JSON" Error
+## Common Issues and Solutions
 
-**Cause**: The app cannot access the selected JSON file.
+### "I can't find the memories_history.json file"
 
-**Solution**: Make sure the file is not open in another application and that you have read permissions.
-
-### All Downloads Failing
-
-**Cause**: Download links in your data export have expired.
-
-**Solution**: Request a fresh data export from Snapchat. Download links typically expire after a few days.
-
-### Some Downloads Failing
-
-**Cause**: Individual download links may have expired or network issues occurred.
+**Problem**: You probably didn't select "Export JSON Files" when requesting your data.
 
 **Solution**: 
-- Review the failed files list to see which memories couldn't be downloaded
-- Request a new data export if many files are failing
-- Check your internet connection
+1. Go back to Snapchat
+2. Request your data again
+3. Make sure to select "Export JSON Files - For data portability purposes"
+4. Wait for the new download link
 
-### Permission Issues
+### "All my downloads are failing"
 
-**Cause**: macOS security restrictions preventing file access.
+**Problem**: The download links in your data export have expired.
 
-**Solution**: When prompted, grant the app permission to access files and folders. You can also check System Settings > Privacy & Security > Files and Folders.
+**Solution**: 
+1. Request a fresh data export from Snapchat
+2. Download it as soon as you get the email
+3. Use this app within a few days of downloading
 
-## Project Structure
-```
-snap_memory_saver/
-├── snap_memory_saverApp.swift    # App entry point
-├── ContentView.swift              # Main UI
-├── Models.swift                   # Data models
-├── DownloadManager.swift          # Download logic
-├── FolderPicker.swift            # Folder selection UI
-└── FailedFilesView.swift         # Failed files display
-```
+### "The app won't open"
 
-## Development
+**Problem**: macOS is blocking the app because it's not from the App Store.
 
-### Building the Project
+**Solution**: 
+1. Don't double-click the app
+2. Right-click (or Control + click) on the app
+3. Select "Open" from the menu
+4. Click "Open" in the dialog box
+5. After doing this once, you can double-click to open it normally
 
-1. Ensure you have Xcode 14.0 or later installed
-2. Clone the repository
-3. Open `snap_memory_saver.xcodeproj` in Xcode
-4. Select your Mac as the target
-5. Build and run with `Cmd + R`
+### "I'm getting a permission error"
 
-### Key Dependencies
+**Problem**: The app needs permission to read your files and save to folders.
 
-- SwiftUI for the user interface
-- Combine for reactive state management
-- Foundation for networking and file operations
-
-No external dependencies or package managers required.
+**Solution**: 
+1. When the app asks for permission, click "Allow"
+2. If you clicked "Don't Allow" by accident, go to:
+   - System Settings > Privacy & Security > Files and Folders
+   - Find the Snapchat Memories Exporter app
+   - Turn on the permissions
 
 ## Technical Details
 
@@ -212,6 +247,7 @@ This application:
 - Does not transmit data to any third-party servers
 - Only communicates with Snapchat's servers to download your memories
 - Operates entirely offline except for downloading files
+- All your data stays on your computer
 
 ## Known Limitations
 
@@ -236,15 +272,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-
-- Built with Swift and SwiftUI
-- Designed for macOS Ventura and later
-
 ## Support
 
 If you encounter issues or have questions:
-1. Check the [Troubleshooting](#troubleshooting) section
+1. Check the [Common Issues and Solutions](#common-issues-and-solutions) section
 2. Search existing [Issues](https://github.com/jackfpaylor/snapchat-memories-exporter/issues)
 3. Create a new issue with detailed information about your problem
 
